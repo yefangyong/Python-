@@ -40,6 +40,5 @@ class Spider:
         print(list(anchors))
 
 
-
 spider = Spider()
 spider.go()
