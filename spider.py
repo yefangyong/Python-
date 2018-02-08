@@ -33,11 +33,29 @@ class Spider:
         }
         return map(f,anchors)
 
+
+    def __sort(self, anchors):
+        #filter
+        anchors = sorted(anchors, key=self.__sort_seed, reverse=True)
+        return anchors
+
+    def __sort_seed(self, anchor):
+        r = re.findall('\d*', anchor['number'])
+        number = 1
+        if '万' in anchor['number']:
+            number = number * 10000
+        return number
+
+    def __show(self,anchors):
+        for rank in range(0, len(anchors)):
+            print('rank  ' + str(rank+1) + ' : ' + anchors[rank]['name'] + '   ' + anchors[rank]['number']+'人')
+
     def go(self):
         htmls = self.__fetch_content()
         anchors = self.__analysis(htmls)
         anchors = self.__refine(anchors)
-        print(list(anchors))
+        anchors = self.__sort(anchors)
+        self.__show(anchors)
 
 
 spider = Spider()
