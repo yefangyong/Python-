@@ -4,7 +4,7 @@ import re
 
 class Spider:
     url = "https://www.xy.com"
-    root_pattern = '<div class="video-info">([\s\S]*?)</div>'
+    root_pattern = '<div class="video-info">([\s\S]*)</div>'
     name_pattern = '</i>([\s\S]*?)</span>'
     number_pattern = '<span class="video-number">([\s\S]*?)</span>'
     index_pattern = '<a class="game_pic" href="([\s\S]*?)" target="_blank">([\s\S]*?)</a>'
